@@ -1,17 +1,13 @@
 import os
-import urllib.request
-from flask import Flask, request, current_app, send_from_directory, Response
+from flask import Flask, request, current_app, send_from_directory
 from flask_cors import CORS
 from werkzeug.utils import secure_filename
 import json
 import sys
-import re
-from pathlib import Path
 import os
 import cv2
 
 UPLOAD_FOLDER = 'static/uploads/'
-BASE_DIR = Path('.')
 
 app = Flask(__name__)
 CORS(app)
@@ -51,5 +47,5 @@ def download_video(filename):
 	uploads = os.path.join(current_app.root_path, app.config['UPLOAD_FOLDER'])
 	return send_from_directory(uploads, filename)
 
-if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000, debug=True, threaded=True)
+if __name__ == '__main__':
+    app.run()
